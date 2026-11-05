@@ -4,7 +4,7 @@
 #include <wait.h>
 
 int main(void) {
-    
+
     pid_t pid = fork();
 
     if (pid > 0) {
