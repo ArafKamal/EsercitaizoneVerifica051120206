@@ -3,4 +3,4 @@ project(EsercitaizoneVerifica C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(EsercitaizoneVerifica es6.c)
+add_executable(EsercitaizoneVerifica es7.c)
