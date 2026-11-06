@@ -21,11 +21,18 @@ int main(void) {
         exit(1);
     }
 
-    read(fd, msg, sizeof(msg));
+    while (1) {
+        read(fd, msg, sizeof(msg));
+
+        if (strcmp(msg, "QUIT") == 0) {
+            break;
+        }
+
+        printf("[Server] %s\n", msg);
+        fflush(stdout);
+    }
+
     close(fd);
-
-    printf("[Server] %s", msg);
-
     unlink(FIFO);
 
 

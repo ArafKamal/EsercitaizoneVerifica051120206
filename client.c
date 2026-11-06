@@ -25,9 +25,6 @@ int main(void) {
 
     char msg[100];
 
-    printf("Inserisci la stringa da speride\n");
-    fgets(msg, 100, stdin);
-
     int fd = open(FIFO, O_WRONLY);
 
     if (fd == -1) {
@@ -35,7 +32,21 @@ int main(void) {
         exit(1);
     }
 
-    write(fd, msg, strlen(msg) + 1);
+    while (1) {
+
+        printf("Inserisci un messaggio: ");
+        fflush(stdout);
+        fgets(msg, sizeof(msg), stdin);
+
+        msg[strcspn(msg, "\n")] = '\0';
+
+        if (strcmp(msg, "QUIT") == 0) {
+            write(fd, msg, strlen(msg) + 1);
+            break;
+        }
+
+        write(fd, msg, strlen(msg) + 1);
+    }
 
     close(fd);
 
