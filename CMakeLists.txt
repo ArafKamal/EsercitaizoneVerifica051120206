@@ -3,4 +3,5 @@ project(EsercitaizoneVerifica C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(EsercitaizoneVerifica main2.c)
+add_executable(EsercitaizoneVerifica main2.c
+        produttore_filtro.c)
